@@ -29,6 +29,7 @@ const val ROUTE_UIDES2 ="uides2"
 const val ROUTE_UIDES3 ="uides3"
 const val ROUTE_REGISTER = "register"
 const val ROUTE_LOGIN = "login"
+const val ROUTE_TEST = "test"
 
 
 

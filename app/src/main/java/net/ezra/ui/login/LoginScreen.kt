@@ -88,6 +88,15 @@ fun LoginScreen(navController: NavController, onLoginSuccess: () -> Unit) {
             ) {
                 Text("Login")
             }
+            Button(
+                colors = ButtonDefaults.buttonColors(Color(0xff0FB06A)),
+                onClick =  {navController.navigate(ROUTE_HOME) {
+                    popUpTo(ROUTE_LOGIN) { inclusive = true }}},
+                modifier = Modifier.fillMaxWidth()
+            ){
+                Text("Guest")
+
+            }
 
             androidx.compose.material3.Text(
                 modifier = Modifier

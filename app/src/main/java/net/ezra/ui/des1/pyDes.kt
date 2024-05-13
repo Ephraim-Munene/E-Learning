@@ -147,12 +147,13 @@ fun BookCard(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { /* Navigate to book details screen */ },
-        shape = RoundedCornerShape(8.dp)
+        shape = RoundedCornerShape(8.dp),
+
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(1.dp)
                 .background(color = Color.White)
 
         ) {

@@ -13,17 +13,24 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CardElevation
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
@@ -69,11 +76,12 @@ fun HomeScreen(navController: NavHostController) {
 
 
 
-    Box (
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = Color.White)
-    ){
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = Color.White)
+
+        ) {
 //        Image(painter = painterResource(id = R.drawable.imge), contentDescription = "",
 //            modifier = Modifier
 //                .fillMaxSize(),
@@ -82,26 +90,30 @@ fun HomeScreen(navController: NavHostController) {
 //        )
 
 
-
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentHeight()
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight()
 //                .padding(10.dp)
-                .padding(top = 10.dp)
+                    .padding(top = 10.dp)
 
-        ){
-            Spacer(modifier = Modifier.height(30.dp))
+            ) {
+                Spacer(modifier = Modifier.height(30.dp))
 
-            Row{
+                Row {
 
-                    Text(text = "LEARN", fontSize = 35.sp,color = Color.Black)
-                Spacer(modifier = Modifier.width(10.dp))
-                    Text(text = "CODING", fontWeight = FontWeight.Bold,color = Color.Black, fontSize = 35.sp)
+                    Text(text = "LEARN", fontSize = 35.sp, color = Color.Black)
+                    Spacer(modifier = Modifier.width(10.dp))
+                    Text(
+                        text = "CODING",
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black,
+                        fontSize = 35.sp
+                    )
 
 
-                Image(painter = painterResource(id = R.drawable.book3), contentDescription = "")
-            }
+//                    Image(painter = painterResource(id = R.drawable.book3), contentDescription = "")
+                }
 //
 //
 //            LazyRow (
@@ -175,16 +187,16 @@ fun HomeScreen(navController: NavHostController) {
 //
 //            }
 
-            Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
 
                 LazyColumn {
                     item {
-                        Text(text = "UI/UX Courses", fontSize = 25.sp,fontWeight = FontWeight.Bold)
-                        Row  (
+                        Text(text = "UI/UX Courses", fontSize = 25.sp, fontWeight = FontWeight.Bold)
+                        Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                        ){
+                        ) {
                             LazyRow {
                                 item {
                                     Card(
@@ -236,14 +248,18 @@ fun HomeScreen(navController: NavHostController) {
                         }
 
 
-                        Text(text = "Python courses", fontSize = 25.sp,fontWeight = FontWeight.Bold)
+                        Text(
+                            text = "Python courses",
+                            fontSize = 25.sp,
+                            fontWeight = FontWeight.Bold
+                        )
 
-                        Row   (
+                        Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                        ){
-                            LazyRow{
-                                item{
+                        ) {
+                            LazyRow {
+                                item {
                                     Card(
                                         lessonTitle = "Explore Various Python Courses",
                                         description = "Comprehensive guide to Python: from basics to advanced topics, with practical examples and exercises.",
@@ -298,12 +314,12 @@ fun HomeScreen(navController: NavHostController) {
                         }
 
 
-                        Text(text = "Java Courses", fontSize = 25.sp,fontWeight = FontWeight.Bold)
+                        Text(text = "Java Courses", fontSize = 25.sp, fontWeight = FontWeight.Bold)
 
-                        Row   (
+                        Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                        ){
+                        ) {
                             LazyRow {
                                 item {
                                     Card(
@@ -333,7 +349,7 @@ fun HomeScreen(navController: NavHostController) {
                                         lessonTitle = "Explore Various Java Courses",
                                         description = "Java programming simplified: Step-by-step tutorials, practical tips, and projects for beginners to build strong foundations.",
                                         icon = painterResource(id = R.drawable.book3),
-                                        image = painterResource(id = R.drawable.book9),
+                                        image = painterResource(id = R.drawable.enam),
                                         destination = ROUTE_JVDES3, // Provide the destination route
 
                                         navController = navController
@@ -354,7 +370,6 @@ fun HomeScreen(navController: NavHostController) {
                                     Spacer(modifier = Modifier.width(20.dp))
 
 
-
                                 }
                             }
                         }
@@ -362,11 +377,11 @@ fun HomeScreen(navController: NavHostController) {
 
 
 
-                        Text(text = "Html Courses", fontSize = 25.sp,fontWeight = FontWeight.Bold)
-                        Row   (
+                        Text(text = "Html Courses", fontSize = 25.sp, fontWeight = FontWeight.Bold)
+                        Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                        ){
+                        ) {
                             LazyRow {
                                 item {
                                     Card(
@@ -420,7 +435,7 @@ fun HomeScreen(navController: NavHostController) {
 //                                    isCircle = true
                                     )
 
-                                    Spacer(modifier = Modifier.width(20.dp))
+                                    Spacer(modifier = Modifier.height(50.dp))
 
                                 }
                             }
@@ -428,68 +443,12 @@ fun HomeScreen(navController: NavHostController) {
                         }
 
 
-
-
-
-
-
-
-
-
                     }
                 }
-            // Bottom navigation
-            BottomNavigation(
-                modifier = Modifier
-                    .fillMaxWidth()
-                .background(color = Color.White)
-            ) {
-                BottomNavigationItem(
-                    icon = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.home),
-                            contentDescription = "Home"
-                        )
-                    },
-                    label = { Text(text = "Home") },
-                    selected = false, // Change this according to your current destination
-                    onClick = {
-                        // Navigate to home screen
-                        navController.navigate(ROUTE_HOME) {
-                            // Add any navigation options if needed
-                        }
-                    }
-                )
 
-                BottomNavigationItem(
-                    icon = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.book3),
-                            contentDescription = "About"
-                        )
-                    },
-                    label = { Text(text = "About") },
-                    selected = false, // Change this according to your current destination
-                    onClick = {
-                        // Navigate to about screen
-                        navController.navigate(ROUTE_ABOUT) {
-                            // Add any navigation options if needed
-                        }
-                    }
-                )
 
-                // Add more BottomNavigationItem for additional destinations
             }
-
-
-
-
-
-
-
-
         }
-    }
 
 
 }
@@ -512,11 +471,17 @@ fun Card(
     Card(
         modifier = Modifier
             .width(350.dp) // Set a fixed width for the card
-            .padding(horizontal = 8.dp) // Add padding to reduce card size horizontally
+            .padding(horizontal = 8.dp)
+            .shadow(elevation = 10.dp)
+
+
+        // Add padding to reduce card size horizontally
+
     ) {
         Column(
             modifier = Modifier
                 .background(color = Color.White)
+
         ) {
             Image(
                 painter = image,

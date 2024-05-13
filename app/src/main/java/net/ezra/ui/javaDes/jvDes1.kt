@@ -2,6 +2,7 @@ package net.ezra.ui.javaDes
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -24,6 +25,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -39,11 +41,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.FileProvider
 import net.ezra.R
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.google.firebase.Firebase
+import com.google.firebase.storage.storage
 import net.ezra.navigation.ROUTE_ABOUT
 import net.ezra.navigation.ROUTE_HOME
+import java.io.File
 
 
 @Composable
@@ -62,7 +68,7 @@ fun JavaDesScreen(navController: NavHostController) {
 //                        )
 //                    }
                     Spacer(modifier = Modifier.width(150.dp))
-                    IconButton(onClick = { /* do something */ }) {
+                    IconButton(onClick = { navController.navigate(ROUTE_HOME) }) {
                         Icon(
                             Icons.Filled.Home,
                             contentDescription = "Localized description",
@@ -119,7 +125,7 @@ fun JavaDesScreen(navController: NavHostController) {
                                     " this book offers a comprehensive overview of Java development. With practical examples and insightful explanations, " +
                                     "you'll learn how to write clean, efficient code and build powerful applications in Java.",
                             imageResId = R.drawable.java,
-                            url = "https://introcs.cs.princeton.edu/java/home/chapter1.pdf", // URL for UI/UX courses
+                            url = "https://firebasestorage.googleapis.com/v0/b/final-1424d.appspot.com/o/Learn%20Java%20in%20One%20Day%20and%20Learn%20It%20Well%20-%20PDF%20Room.pdf?alt=media&token=f0698c22-032b-49e8-8c44-8c1fe82bca56", // URL for UI/UX courses
                             navController = navController,
                             presetRating = 4 // Specify the preset rating here
                         )
@@ -144,6 +150,7 @@ fun BookCard(
     presetRating: Int // New parameter for preset rating
 ) {
     var userRating by remember { mutableStateOf(presetRating) } // Use the preset rating
+
 
     Card(
         modifier = Modifier
@@ -201,6 +208,31 @@ fun BookCard(
             ) {
                 Text(text = "View Course", color = Color.Black)
             }
+        }
+    }
+    val storageRef = Firebase.storage.getReferenceFromUrl(url)
+
+    LaunchedEffect(key1 = storageRef) {
+        try {
+            val localFile = File.createTempFile("tempFile", ".pdf")
+            storageRef.getFile(localFile).addOnSuccessListener {
+                val pdfUri = FileProvider.getUriForFile(
+                    navController.context,
+                    navController.context.packageName + ".provider",
+                    localFile
+                )
+                val intent = Intent(Intent.ACTION_VIEW).apply {
+                    setDataAndType(pdfUri, "application/pdf")
+                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                }
+                navController.context.startActivity(intent)
+            }.addOnFailureListener { exception ->
+                Log.e("BookCard", "Error downloading PDF: $exception")
+                // Handle failure
+            }
+        } catch (e: Exception) {
+            Log.e("BookCard", "Error creating temp file: $e")
+            // Handle exception
         }
     }
 }

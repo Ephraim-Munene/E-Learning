@@ -116,7 +116,7 @@ fun Ui4Screen(navController: NavHostController) {
                         bookDescription = "\"Mastering UI/UX Design\": Dive into the fundamentals and advanced principles of UI/UX design with our comprehensive course book. Explore user-centered design, wireframing, prototyping, and usability testing to create captivating digital experiences. Packed with practical examples and case studies," +
                                 " this book equips you with the skills to craft intuitive interfaces and elevate user satisfaction.",
                         imageResId = R.drawable.java,
-                        url = "https://introcs.cs.princeton.edu/java/home/chapter1.pdf", // URL for UI/UX courses
+                        url = "https://www.researchgate.net/publication/317660257_User_Interface_and_User_Experience_UIUX_Design", // URL for UI/UX courses
                         navController = navController,
                         presetRating = 4 // Specify the preset rating here
                     )

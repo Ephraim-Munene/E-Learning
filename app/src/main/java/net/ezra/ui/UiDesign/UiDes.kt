@@ -115,7 +115,7 @@ fun UiScreen(navController: NavHostController) {
                         bookDescription = "Designing Delightful Experiences: Unlock the secrets of crafting exceptional user experiences with our UI/UX course book. From understanding user behavior to creating visually stunning interfaces, this book covers it all. Dive deep into interaction design, information architecture, " +
                                 "and responsive design to create products that users love to engage with.",
                         imageResId = R.drawable.java,
-                        url = "https://introcs.cs.princeton.edu/java/home/chapter1.pdf", // URL for UI/UX courses
+                        url = "https://athena.ecs.csus.edu/~buckley/CSc131_files/Basics-of-ux-design%20Interaction%20Design%20Foundation.pdf", // URL for UI/UX courses
                         navController = navController,
                         presetRating = 4 // Specify the preset rating here
                     )

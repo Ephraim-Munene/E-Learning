@@ -88,7 +88,7 @@ fun Des3Screen(navController: NavHostController) {
             modifier = Modifier.padding(innerPadding),
             text = "Example of a scaffold with a bottom app bar."
         )
-    Box (
+        Box (
         modifier = Modifier
             .fillMaxSize()
             .background(color = Color.White)
@@ -126,7 +126,7 @@ fun Des3Screen(navController: NavHostController) {
 
             }
         }
-    }
+        }
 
     }
 }

@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import net.ezra.ui.SplashScreen
+import net.ezra.ui.UiDesign.TestScreen
 import net.ezra.ui.about.AboutScreen
 import net.ezra.ui.UiDesign.Ui2Screen
 import net.ezra.ui.UiDesign.Ui3Screen
@@ -125,6 +126,9 @@ fun AppNavHost(
         }
         composable(ROUTE_DESIGNSCREEN) {
             Ui4Screen(navController)
+        }
+        composable(ROUTE_TEST) {
+            TestScreen(navController)
         }
 
     }
